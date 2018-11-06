@@ -35,7 +35,7 @@ class Detail extends Component{
                             return(
                                 <li key={comment.id}>
                                     <p>{comment.comment}</p>
-                                    <p>-- {comment.author}, {new Date(comment.date).toLocaleDateString()}</p>
+                                    <p>-- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
                                 </li>
                             );
                         }  
