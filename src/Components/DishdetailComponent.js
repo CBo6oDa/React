@@ -20,13 +20,13 @@ import { Link } from 'react-router-dom';
                 <div></div>
             );
     }
-    function RenderComments(dish) {
-        if(dish != null){
+    function RenderComments(comments) {
+        if(comments != null){
             return(
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments</h4>
                     <ul className="list-unstyled">
-                        {dish.comments.map((comment) => {
+                        {comments.map((comment) => {
                             return(
                                 <li key={comment.id}>
                                     <p>{comment.comment}</p>
@@ -60,8 +60,8 @@ import { Link } from 'react-router-dom';
                 </div>
 
                 <div className="row justify-content-center">
-                        {RenderDish(props.selectedDish)}
-                        {RenderComments(props.selectedDish)}
+                        {RenderDish(props.dish)}
+                        {RenderComments(props.comments)}
                 </div>
             </div>
         );
