@@ -26,8 +26,8 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
         }
 
         handleSubmit(values) {
-            console.log('Current State is: ' + JSON.stringify(values));
-            alert('Current State is: ' + JSON.stringify(values));
+            this.toggleModal();
+            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
             // event.preventDefault();
         }
         
@@ -130,7 +130,7 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
                 <div></div>
             );
     }
-    function RenderComments(comments) {
+    function RenderComments({comments, addComment, dishId}) {
         if(comments != null){
             return(
                 <div className="col-12 col-md-5 m-1">
@@ -146,7 +146,7 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
                         }  
                         )}
                     </ul>
-                    <CommentForm/>
+                    <CommentForm dishId={dishId} addComment={addComment} />
                      </div>
             );
         }
@@ -173,7 +173,10 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 
                 <div className="row justify-content-center">
                         {RenderDish(props.dish)}
-                        {RenderComments(props.comments)}
+                        <RenderComments comments={props.comments}
+                            addComment={props.addComment}
+                            dishId={props.dish.id}
+                        />
                 </div>
             </div>
         );
