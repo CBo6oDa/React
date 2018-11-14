@@ -4,19 +4,17 @@ import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 
 function RenderCard({item, isLoading, errMess}) {
-
-  if (isLoading) {
-    return(
-      <Loading />
-    );
-  }
-
-  else if (errMess){
+  if (errMess){
     return(
       <h4>{errMess}</h4>
     );
   }
-
+  else if (isLoading) {
+    return(
+      <Loading />
+    );
+  }
+  
   else
     return(
       <Card>
